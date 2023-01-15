@@ -1,26 +1,61 @@
 public class LightCar<L extends ClassB> extends Transport implements Competing {
-    private String body;
     private String transmission;
     private int number;
     private int places;
-    public LightCar(String brand, String model, double engineVolume, String body, String transmission, int number, int places) {
+
+
+     static Body body;
+
+    public LightCar(String brand, String model, double engineVolume, String transmission, int number, int places, Body body) {
         super(brand, model, engineVolume);
-        this.body = body;
+
         this.transmission = transmission;
         this.number = number;
         this.places = places;
+        this.body = body;
+
     }
-    public String getBody() {
-        return body;
+
+    @Override
+    public String toString() {
+        return "LightCar{" +" " +body+
+                '}';
     }
-    public void setBody(String body) {
-        String Default = "default";
-        if (body == null || body.equals("")) {
-            this.body = Default;
-        } else {
-            this.body = body;
+
+    @Override
+    void printType() {
+        System.out.println();
+
+    }
+
+    static enum Body{
+        SEDAN("Седан"),HETCHBACK("Хэтчбэк"),CUPE("Купе"),UNIVERSAL("Универсал"),
+        OFFROAD("Внедорожник"),CROSS("Кроссовер"),WAGGON("Пикап"),VAN("Фургон"),MINIVAN("Минивэн");
+        private String type;
+
+        Body(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            String Default = "Данных по транспортному средству недостаточно";
+            if (type == null || type.equals("")) {
+                this.type = Default;
+            } else {
+                this.type = type;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return " Кузов=" +" " +type + '\'' ;
         }
     }
+
 
     public String getTransmission() {
         return transmission;

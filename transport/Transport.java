@@ -75,4 +75,6 @@ public abstract class Transport implements Competing {
                 ", engineVolume=" + engineVolume +
                 '}';
     }
+    abstract void printType();
+
 }

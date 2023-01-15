@@ -5,13 +5,58 @@ public class HeavyCar<A extends ClassC> extends Transport implements Competing{
     private int number;
     private int places;
 
-    public HeavyCar(String brand, String model, double engineVolume, String body, String transmission, int number, int places) {
+    Type сapacity;
+
+    public HeavyCar(String brand, String model, double engineVolume, String body, String transmission, int number, int places, Type сapacity) {
         super(brand, model, engineVolume);
         this.body = body;
         this.transmission = transmission;
         this.number = number;
         this.places = places;
+        this.сapacity = сapacity;
     }
+
+    @Override
+    public String toString() {
+        return "HeavyCar{"+" "+ сapacity;
+    }
+
+    @Override
+    void printType() {
+
+    }
+
+    public enum Type {
+        N1("Грузоподъемность: до 3,5 тонн "),
+        N2("Грузоподъемность: от 3,5 до 12 тонн"),
+        N3("Грузоподъемность: свыше 12 тонн");
+        private String type;
+
+        Type(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            String Default = "Данных по транспортному средству недостаточно";
+            if (type == null || type.equals("")) {
+                this.type = Default;
+            } else {
+                this.type = type;
+            }
+        }
+
+        @Override
+        public String toString() {
+            return type + "}";
+        }
+    }
+
+
+
 
     public String getBody() {
         return body;

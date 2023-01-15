@@ -1,4 +1,5 @@
-public class Bus<B extends ClassD> extends Transport implements Competing{
+public class Bus<B extends ClassD> extends Transport implements Competing {
+
 
     private int doors;
     private int route;
@@ -11,7 +12,7 @@ public class Bus<B extends ClassD> extends Transport implements Competing{
 
     public int setStandingPlaces(int standingPlaces) {
         int Default = 1;
-        if (standingPlaces <=0){
+        if (standingPlaces <= 0) {
             this.standingPlaces = Default;
         }
         return standingPlaces;
@@ -23,7 +24,7 @@ public class Bus<B extends ClassD> extends Transport implements Competing{
 
     public int setDoors(int doors) {
         int Default = 1;
-        if (doors <=0){
+        if (doors <= 0) {
             this.doors = Default;
         }
         return doors;
@@ -50,13 +51,62 @@ public class Bus<B extends ClassD> extends Transport implements Competing{
         }
     }
 
-    public Bus(String brand, String model, double engineVolume,int doors,int route,String emergencyExit, int standingPlaces) {
-        super(brand, model, engineVolume);
-        this.doors=doors;
-        this.route=route;
-        this.emergencyExit=emergencyExit;
-        this.standingPlaces=standingPlaces;
+    Places places;
 
+    public Bus(String brand, String model, double engineVolume, int doors, int route, String emergencyExit, int standingPlaces, Places places) {
+        super(brand, model, engineVolume);
+        this.doors = doors;
+        this.route = route;
+        this.emergencyExit = emergencyExit;
+        this.standingPlaces = standingPlaces;
+        this.places = places;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "Bus{" + " " + places;
+    }
+
+    @Override
+    void printType() {
+        System.out.println();
+
+    }
+
+    public enum Places {
+        ESPECIALlYSMALL("до 10 мест"),
+        SMALL("до 25 мест"),
+        AVERAGE("40-50 мест"),
+        LARGE("60-80 мест"),
+        ESPECIALLYLARGE("100-120 мест");
+
+        private String type;
+
+        Places(String type) {
+            this.type = type;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            String Default = "Данных по транспортному средству недостаточно";
+            if (type == null || type.equals("")) {
+                this.type = Default;
+            } else {
+                this.type = type;
+            }
+        }
+
+
+        @Override
+        public String toString() {
+
+            return type + "}";
+        }
     }
 
     @Override
